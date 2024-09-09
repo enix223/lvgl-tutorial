@@ -2,8 +2,8 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "quickstart",
-            "displayName": "quickstart",
+            "name": "tutorial",
+            "displayName": "tutorial",
             "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
@@ -15,9 +15,9 @@
     ],
     "buildPresets": [
     {
-      "name": "quickstart",
+      "name": "tutorial",
       "hidden": false,
-      "configurePreset": "quickstart",
+      "configurePreset": "tutorial",
       "jobs": 4
     }
   ]

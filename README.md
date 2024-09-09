@@ -16,23 +16,23 @@ This repo is to run tutorial app in windows platform, develop with vscode + cmak
 
 ## Build and run
 
-* Configure quickstart
+* Configure tutorial
 
     ```powershell
-    cmake --preset quickstart
+    cmake --preset tutorial
     ```
 
 * Build executable
 
     ```powershell
-    cmake --build . --preset quickstart --target quickstart
+    cmake --build . --preset tutorial --target quickstart
 
     # clean
-    cmake --build . --preset quickstart --target clean
+    cmake --build . --preset tutorial --target clean
     ```
 
 * Run quickstart
 
     ```powershell
-    out\build\quickstart\Debug\quickstart.exe
+    .\out\build\tutorial\quickstart\Debug\quickstart.exe
     ```

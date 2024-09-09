@@ -12,20 +12,13 @@ include(FetchContent)
 ################################
 FetchContent_Declare(
     lvgl
-    GIT_REPOSITORY https://github.com/lvgl/lvgl.git
+    GIT_REPOSITORY git@github.com:lvgl/lvgl.git
     GIT_TAG        v9.2.0
+    SOURCE_DIR     deps/lvgl
 )
 FetchContent_MakeAvailable(lvgl)
 
-################################
-#     quickstart executable    #
-################################
-add_executable(quickstart quickstart/main.c)
-# add include path for quickstart executable
-include_directories(${CMAKE_SOURCE_DIR}/quickstart)
-target_include_directories(quickstart PRIVATE ${lvgl_SOURCE_DIR}/)
-# Link the lvgl dependency
-target_link_libraries(quickstart PRIVATE lvgl::lvgl)
+add_subdirectory(quickstart)
 
 include(CTest)
 enable_testing()
