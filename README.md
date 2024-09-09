@@ -2,6 +2,8 @@
 
 This repo is to run tutorial app in windows platform, develop with vscode + cmake.
 
+![benchmark.png](./showcases/benchmark.png)
+
 ## Requirement
 
 1. Install [vistual studio 2022](https://visualstudio.microsoft.com/downloads/)
@@ -25,7 +27,7 @@ This repo is to run tutorial app in windows platform, develop with vscode + cmak
 * Build executable
 
     ```powershell
-    cmake --build . --preset tutorial --target quickstart
+    cmake --build . --preset tutorial --target quickstart -- /maxcpucount:4
 
     # clean
     cmake --build . --preset tutorial --target clean
