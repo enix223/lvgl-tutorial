@@ -22,6 +22,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(lvgl)
 
 add_subdirectory(quickstart)
+add_subdirectory(layout)
 
 include(CTest)
 enable_testing()
