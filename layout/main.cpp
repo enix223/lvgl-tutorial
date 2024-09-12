@@ -10,40 +10,33 @@ class Widget {
   int pos_x;
   int pos_y;
   lv_obj_t *widget;
+  lv_style_t style;
 
  public:
-  void Draw();
-  void SetBackgroundColor(lv_color_t &&color);
-  void SetBackgroundColor(lv_color_t &color);
+  void SetBackgroundColor(uint32_t colorHex);
   Widget(int width, int heigt, int pos_x, int pos_y, lv_obj_t *screen);
 };
 
-void Widget::Draw() {
-  lv_obj_set_size(this->widget, this->width, this->height);
-  lv_obj_set_pos(this->widget, this->pos_x, this->pos_y);
-}
-
-void Widget::SetBackgroundColor(lv_color_t &&color) { this->SetBackgroundColor(color); }
-
-void Widget::SetBackgroundColor(lv_color_t &color) {
-  lv_style_t style;
+void Widget::SetBackgroundColor(uint32_t colorHex) {
   lv_style_init(&style);
-  lv_style_set_bg_color(&style, color);
-  lv_obj_add_style(this->widget, &style, LV_PART_MAIN);
+  lv_style_set_bg_color(&style, lv_color_hex(colorHex));
+  lv_style_set_bg_opa(&style, LV_OPA_COVER);
+  lv_obj_add_style(widget, &style, LV_PART_MAIN);
 }
 
-Widget::Widget(int width, int heigt, int pos_x, int pos_y, lv_obj_t *screen) {
-  this->widget = lv_obj_create(screen);
-  this->width = width;
-  this->height = height;
-  this->pos_x = pos_x;
-  this->pos_y = pos_y;
+Widget::Widget(int w, int h, int x, int y, lv_obj_t *screen) {
+  widget = lv_obj_create(screen);
+  width = w;
+  height = h;
+  pos_x = x;
+  pos_y = y;
+  lv_obj_set_size(widget, width, height);
+  lv_obj_set_pos(widget, pos_x, pos_y);
 }
 
-void drawScreen() {
-  Widget widget = Widget(100, 100, 10, 10, lv_screen_active());
-  widget.SetBackgroundColor(lv_color_hex(0xff0000));
-  widget.Draw();
+void draw_screen() {
+  static Widget widget(100, 100, 0, 0, lv_screen_active());
+  widget.SetBackgroundColor(0xFF0000);
 }
 
 int main() {
@@ -75,7 +68,7 @@ int main() {
     return -1;
   }
 
-  drawScreen();
+  draw_screen();
 
   lv_unlock();
 
